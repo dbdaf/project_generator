@@ -1,0 +1,33 @@
+project:
+  setups:
+  - setup: Options for {{name}}
+    add-path:
+        {% for path in include_paths %}- {{path}}
+        {% endfor %}
+    debug: 'on'
+    define:
+        {% for symbol in macros %}- {{symbol | replace ('"', '\\"') }}
+        {% endfor %}
+    misc:
+    - C:
+       {% for flag in misc['c_flags'] %}- {{flag}}
+       {% endfor %}
+      C-CPP:
+      {% for flag in misc['cxx_flags'] %}- {{flag}}
+      {% endfor %}
+      Link:
+      {% for flag in misc['ld_flags'] %}- {{flag}}
+      {% endfor %}
+    - ASM:
+      {% for flag in misc['asm_flags'] %}- {{flag}}
+      {% endfor %}
+  linker:
+  - script: {{linker_file}}
+  groups:{% for group_name,files in groups.items() %}
+    - group: {{group_name}}
+      files:{% for file in files %}
+        - file: {{file.path}}{% endfor %}
+    {% endfor %}
+
+  components:
+  - component: ARM::CMSIS:CORE

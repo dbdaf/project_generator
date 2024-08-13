@@ -1,0 +1,19 @@
+# This project was exported via the project generator.
+# More information https://github.com/project-generator/project_generator
+solution:
+  created-for: CMSIS-Toolbox@2.2.0
+  packs:
+    - pack: ARM::CMSIS
+    - pack: {{pack}}
+  compiler: AC6
+  target-types:
+    - type: Debug
+      device: {{device}}
+      debug: on
+      optimize: none
+    - type: Release
+      device: {{device}}
+      debug: off
+      optimize: size
+  projects:
+    - project: {{name}}.cproject.yml
