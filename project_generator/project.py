@@ -164,6 +164,8 @@ class ProjectTemplate:
             'name': name,             # project name
             'output_type': output_type, # output type, default - exe
             'target': '',             # target
+            'device': '',              # device name'
+            'pack' : '',                #pack name
             'tools_supported': [],    # Tools which are supported,
         }
         project_template.update(ProjectTemplate._get_common_data_template())
