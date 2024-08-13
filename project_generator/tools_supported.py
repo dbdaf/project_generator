@@ -27,6 +27,7 @@ from .tools.cmakegccarm import CMakeGccArm
 from .tools.cmakearmcc import CMakeArmcc
 from .tools.cmakearmclang import CMakeArmClang
 from .tools.visual_studio import VisualStudioMakeGCCARM, VisualStudioGDB
+from .tools.csolution import csolution
 
 class ToolsSupported:
     """ Represents all tools available """
@@ -74,6 +75,7 @@ class ToolsSupported:
         'cmake_armclang':       CMakeArmClang,
         'visual_studio_gdb':    VisualStudioGDB,
         'visual_studio_make_gcc_arm': VisualStudioMakeGCCARM,
+        'csolution':            csolution,
     }
 
     TOOLCHAINS = list(set([v.get_toolchain() for k, v in TOOLS_DICT.items() if v.get_toolchain() is not None]))
